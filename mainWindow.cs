@@ -66,10 +66,10 @@ namespace qRcon
         private void refreshServerInfo(Server S)
         {
             this.hostnameLabel.Text = S.Hostname;
-            this.gametypeLabel.Text = S.Gametype;
+            this.gametypeLabel.Text = S.getGametype();
             this.modLabel.Text = S.Mod;
             this.playersLabel.Text = S.currentPlayers + "/" + S.maxPlayers;
-            this.serverMapLabel.Text = S.Map;
+            this.serverMapLabel.Text = S.getMapName();
             this.playerListBox.Items.Clear();
             foreach (Player P in S.Players)
             {
@@ -107,6 +107,19 @@ namespace qRcon
                 refreshServerInfo(newServer);
                 updateConsoleOutput("[" + maxPlayers.responseTime + "ms] Successfully updated server: " + newServer.Hostname);
                 currentServer = newServer;
+            }
+
+            else if (currentServer == null)
+            {
+                if (maxPlayers.Error == RCON_Error.REQUEST_TIMED_OUT)
+                {
+                    MessageBox.Show("Timed out trying to connect to the server.\nPerhaps it is offline or no RCON password is set.");
+                }
+            }
+
+            else
+            {
+                queryUserFeedback(maxPlayers);
             }
         }
 
@@ -236,7 +249,7 @@ namespace qRcon
         private void clientInfoContext_Click(object sender, EventArgs e)
         {
             Player P = (Player)playerListBox.SelectedItem;
-            clientInfoPopup newPopup = new clientInfoPopup(currentRcon.dumpUser(P.Name));
+            clientInfoPopup newPopup = new clientInfoPopup(currentRcon.dumpUser(P.Name), P.Name);
             newPopup.Show();
         }
 
@@ -250,6 +263,63 @@ namespace qRcon
         {
             if (currentRcon != null)
                 queryUserFeedback(currentRcon.rconQuery("quit"));
+        }
+
+        private void setSettingsButton_Click(object sender, EventArgs e)
+        {
+            List<String> rconCommands = new List<String>();
+            String newMap = String.Empty;
+
+            if (timeLimitBox.Text.Length > 0)
+            {
+                int timeLimit = -1;
+                if (Int32.TryParse(timeLimitBox.Text, out timeLimit))
+                    rconCommands.Add("scr_" + currentServer.Gametype + "_timelimit " + timeLimit);
+                else
+                    updateConsoleOutput("Ignoring invalid entry \"{0}\" for timelimit", timeLimitBox.Text);
+            }
+
+            if (modBox.Text.Length > 0)
+                rconCommands.Add("fs_game \"mods/" + modBox.Text + "\"");
+
+            if (passwordBox.Text.Length > 0)
+                rconCommands.Add("g_password \"" + passwordBox.Text + "\"");
+
+            if (gametypeSelectionBox.SelectedItem != null)
+            {
+                Gametype Selected =  (Gametype)gametypeSelectionBox.SelectedItem;
+                rconCommands.Add("g_gametype \"" + Selected.Name + "\"");
+            }
+
+            if (mapSelectionBox.SelectedItem != null)
+            {
+                Map desiredMap = (Map)mapSelectionBox.SelectedItem;
+                newMap = desiredMap.Name;
+            }
+
+            if (ffCheckBox.Checked)
+                rconCommands.Add("scr_team_fftype 2");
+            else
+                rconCommands.Add("scr_team_fftype 0");
+
+            if (hardcoreCheckBox.Checked)
+                rconCommands.Add("g_hardcore 1");
+            else
+                rconCommands.Add("g_hardcore 0");
+
+            foreach(String Command in rconCommands)
+            {
+                RCON_Response Request = currentRcon.rconQuery(Command);
+                queryUserFeedback(Request);
+                Thread.Sleep(100);
+            }
+
+            if (newMap == String.Empty)
+                currentRcon.rconQuery("fast_restart");
+            else
+                currentRcon.rconQuery("map \"" + newMap + "\"");
+
+            updateConsoleOutput("Finished applying game settings.");
         }
     }
 }

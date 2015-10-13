@@ -49,6 +49,9 @@
             // 
             // serverIPBox
             // 
+            this.serverIPBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.serverIPBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.serverIPBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.serverIPBox.Location = new System.Drawing.Point(16, 30);
             this.serverIPBox.Name = "serverIPBox";
             this.serverIPBox.Size = new System.Drawing.Size(204, 20);
@@ -56,6 +59,9 @@
             // 
             // serverPortBox
             // 
+            this.serverPortBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.serverPortBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.serverPortBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.serverPortBox.Location = new System.Drawing.Point(16, 70);
             this.serverPortBox.Name = "serverPortBox";
             this.serverPortBox.Size = new System.Drawing.Size(204, 20);
@@ -72,6 +78,9 @@
             // 
             // serverPasswordBox
             // 
+            this.serverPasswordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.serverPasswordBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.serverPasswordBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.serverPasswordBox.Location = new System.Drawing.Point(16, 110);
             this.serverPasswordBox.Name = "serverPasswordBox";
             this.serverPasswordBox.Size = new System.Drawing.Size(204, 20);
@@ -88,6 +97,7 @@
             // 
             // serverAddOk
             // 
+            this.serverAddOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.serverAddOk.Location = new System.Drawing.Point(16, 138);
             this.serverAddOk.Name = "serverAddOk";
             this.serverAddOk.Size = new System.Drawing.Size(84, 23);
@@ -99,6 +109,7 @@
             // serverAddCancel
             // 
             this.serverAddCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.serverAddCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.serverAddCancel.Location = new System.Drawing.Point(136, 138);
             this.serverAddCancel.Name = "serverAddCancel";
             this.serverAddCancel.Size = new System.Drawing.Size(84, 23);
@@ -110,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(232, 173);
             this.Controls.Add(this.serverAddCancel);
             this.Controls.Add(this.serverAddOk);
@@ -119,6 +131,7 @@
             this.Controls.Add(this.serverPortLabel);
             this.Controls.Add(this.serverIPBox);
             this.Controls.Add(this.serverIPLabel);
+            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "addServerDialog";
             this.Text = "Add/Edit Server";

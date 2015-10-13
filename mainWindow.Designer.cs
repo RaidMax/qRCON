@@ -66,6 +66,8 @@
             this.hardcoreLabel = new System.Windows.Forms.Label();
             this.refreshButton = new System.Windows.Forms.Button();
             this.killServerButton = new System.Windows.Forms.Button();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.playerListContext.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,7 +275,7 @@
             // 
             this.mapRotateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mapRotateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.mapRotateButton.Location = new System.Drawing.Point(863, 145);
+            this.mapRotateButton.Location = new System.Drawing.Point(863, 185);
             this.mapRotateButton.Name = "mapRotateButton";
             this.mapRotateButton.Size = new System.Drawing.Size(109, 34);
             this.mapRotateButton.TabIndex = 14;
@@ -285,7 +287,7 @@
             // 
             this.fastRestartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fastRestartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.fastRestartButton.Location = new System.Drawing.Point(863, 225);
+            this.fastRestartButton.Location = new System.Drawing.Point(863, 267);
             this.fastRestartButton.Name = "fastRestartButton";
             this.fastRestartButton.Size = new System.Drawing.Size(109, 34);
             this.fastRestartButton.TabIndex = 15;
@@ -297,7 +299,7 @@
             // 
             this.mapRestartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mapRestartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.mapRestartButton.Location = new System.Drawing.Point(863, 185);
+            this.mapRestartButton.Location = new System.Drawing.Point(863, 227);
             this.mapRestartButton.Name = "mapRestartButton";
             this.mapRestartButton.Size = new System.Drawing.Size(109, 34);
             this.mapRestartButton.TabIndex = 16;
@@ -335,11 +337,12 @@
             this.setSettingsButton.TabIndex = 19;
             this.setSettingsButton.Text = "Set";
             this.setSettingsButton.UseVisualStyleBackColor = true;
+            this.setSettingsButton.Click += new System.EventHandler(this.setSettingsButton_Click);
             // 
             // friendlyFireLabel
             // 
             this.friendlyFireLabel.AutoSize = true;
-            this.friendlyFireLabel.Location = new System.Drawing.Point(632, 311);
+            this.friendlyFireLabel.Location = new System.Drawing.Point(787, 313);
             this.friendlyFireLabel.Name = "friendlyFireLabel";
             this.friendlyFireLabel.Size = new System.Drawing.Size(26, 21);
             this.friendlyFireLabel.TabIndex = 20;
@@ -348,7 +351,7 @@
             // ffCheckBox
             // 
             this.ffCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ffCheckBox.Location = new System.Drawing.Point(636, 336);
+            this.ffCheckBox.Location = new System.Drawing.Point(791, 338);
             this.ffCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.ffCheckBox.Name = "ffCheckBox";
             this.ffCheckBox.Size = new System.Drawing.Size(22, 29);
@@ -378,7 +381,7 @@
             // gametypeChangeLabel
             // 
             this.gametypeChangeLabel.AutoSize = true;
-            this.gametypeChangeLabel.Location = new System.Drawing.Point(307, 312);
+            this.gametypeChangeLabel.Location = new System.Drawing.Point(462, 314);
             this.gametypeChangeLabel.Name = "gametypeChangeLabel";
             this.gametypeChangeLabel.Size = new System.Drawing.Size(81, 21);
             this.gametypeChangeLabel.TabIndex = 24;
@@ -391,7 +394,7 @@
             this.gametypeSelectionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gametypeSelectionBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.gametypeSelectionBox.FormattingEnabled = true;
-            this.gametypeSelectionBox.Location = new System.Drawing.Point(251, 335);
+            this.gametypeSelectionBox.Location = new System.Drawing.Point(406, 337);
             this.gametypeSelectionBox.Name = "gametypeSelectionBox";
             this.gametypeSelectionBox.Size = new System.Drawing.Size(181, 29);
             this.gametypeSelectionBox.TabIndex = 25;
@@ -403,7 +406,7 @@
             this.mapSelectionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.mapSelectionBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.mapSelectionBox.FormattingEnabled = true;
-            this.mapSelectionBox.Location = new System.Drawing.Point(438, 335);
+            this.mapSelectionBox.Location = new System.Drawing.Point(593, 337);
             this.mapSelectionBox.Name = "mapSelectionBox";
             this.mapSelectionBox.Size = new System.Drawing.Size(181, 29);
             this.mapSelectionBox.TabIndex = 27;
@@ -411,7 +414,7 @@
             // mapBoxLabel
             // 
             this.mapBoxLabel.AutoSize = true;
-            this.mapBoxLabel.Location = new System.Drawing.Point(514, 312);
+            this.mapBoxLabel.Location = new System.Drawing.Point(669, 314);
             this.mapBoxLabel.Name = "mapBoxLabel";
             this.mapBoxLabel.Size = new System.Drawing.Size(41, 21);
             this.mapBoxLabel.TabIndex = 26;
@@ -420,7 +423,7 @@
             // hardcoreCheckBox
             // 
             this.hardcoreCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hardcoreCheckBox.Location = new System.Drawing.Point(673, 336);
+            this.hardcoreCheckBox.Location = new System.Drawing.Point(828, 338);
             this.hardcoreCheckBox.Margin = new System.Windows.Forms.Padding(0);
             this.hardcoreCheckBox.Name = "hardcoreCheckBox";
             this.hardcoreCheckBox.Size = new System.Drawing.Size(22, 29);
@@ -430,7 +433,7 @@
             // hardcoreLabel
             // 
             this.hardcoreLabel.AutoSize = true;
-            this.hardcoreLabel.Location = new System.Drawing.Point(664, 311);
+            this.hardcoreLabel.Location = new System.Drawing.Point(819, 313);
             this.hardcoreLabel.Name = "hardcoreLabel";
             this.hardcoreLabel.Size = new System.Drawing.Size(31, 21);
             this.hardcoreLabel.TabIndex = 28;
@@ -440,7 +443,7 @@
             // 
             this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.refreshButton.Location = new System.Drawing.Point(748, 145);
+            this.refreshButton.Location = new System.Drawing.Point(748, 185);
             this.refreshButton.Name = "refreshButton";
             this.refreshButton.Size = new System.Drawing.Size(109, 34);
             this.refreshButton.TabIndex = 30;
@@ -452,7 +455,7 @@
             // 
             this.killServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.killServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.killServerButton.Location = new System.Drawing.Point(748, 185);
+            this.killServerButton.Location = new System.Drawing.Point(748, 267);
             this.killServerButton.Name = "killServerButton";
             this.killServerButton.Size = new System.Drawing.Size(109, 34);
             this.killServerButton.TabIndex = 31;
@@ -460,12 +463,34 @@
             this.killServerButton.UseVisualStyleBackColor = true;
             this.killServerButton.Click += new System.EventHandler(this.killServerButton_Click);
             // 
+            // passwordBox
+            // 
+            this.passwordBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.passwordBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.passwordBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.passwordBox.Location = new System.Drawing.Point(251, 337);
+            this.passwordBox.MaxLength = 6;
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(149, 29);
+            this.passwordBox.TabIndex = 33;
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(288, 312);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(76, 21);
+            this.passwordLabel.TabIndex = 32;
+            this.passwordLabel.Text = "Password";
+            // 
             // mainWindow
             // 
             this.AcceptButton = this.rconCommandSubmit;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.passwordBox);
+            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.killServerButton);
             this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.hardcoreCheckBox);
@@ -550,6 +575,8 @@
         private System.Windows.Forms.ToolStripMenuItem clientInfoContext;
         private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button killServerButton;
+        private System.Windows.Forms.TextBox passwordBox;
+        private System.Windows.Forms.Label passwordLabel;
 
     }
 }

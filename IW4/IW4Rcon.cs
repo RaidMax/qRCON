@@ -20,8 +20,8 @@ namespace qRcon
 
             // set up our socket
             rconConnection = new UdpClient();
-            rconConnection.Client.SendTimeout = 1000;
-            rconConnection.Client.ReceiveTimeout = 1000;
+            rconConnection.Client.SendTimeout = 5000;
+            rconConnection.Client.ReceiveTimeout = 5000;
 
             if (queryString == "getstatus")
                 queryString = String.Format("ÿÿÿÿ {0}", queryString);
@@ -63,11 +63,11 @@ namespace qRcon
 
             StringBuilder incomingString = new StringBuilder();
             byte[] bufferRecv = new byte[ushort.MaxValue];
-
+ignoreException:
             try
-            {
+            {              
                 do
-                {
+                {            
                     bufferRecv = rconConnection.Receive(ref endPoint);
                     incomingString.Append(Encoding.ASCII.GetString(bufferRecv, 0, bufferRecv.Length));
                 } while (rconConnection.Available > 0);
@@ -77,8 +77,10 @@ namespace qRcon
             {
                 if (E.SocketErrorCode == SocketError.ConnectionReset)
                     Response.Error = RCON_Error.CONNECTION_TERMINATED;
+                else if (E.SocketErrorCode == SocketError.TimedOut)
+                    Response.Error = RCON_Error.REQUEST_TIMED_OUT;
                 else
-                    Response.Error = RCON_Error.RESPONSE_INCOMPLETE;
+                    goto ignoreException;
                 return Response;
             }
 
@@ -116,7 +118,7 @@ namespace qRcon
 
             Response.Error = RCON_Error.REQUEST_COMPLETE;
             Response.Success = true;
-
+            
             rconConnection.Close();
             rconConnection = null;
             return Response;

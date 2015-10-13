@@ -80,11 +80,11 @@ namespace qRcon
             Hostname = stripColors(H);
             currentPlayers = P;
             maxPlayers = mP;
-            Gametype = Localization.getGametype(G);
+            Gametype = G;
             Mod = stripColors(M);
             this.Players = Players;
             this.Localization = Localization;
-            Map = Localization.getMapname(Mapname);
+            Map = Mapname;
             MapList = Localization.getAvailableMaps();
             gametypeList = Localization.getAvailableGametypes();
         }
@@ -96,6 +96,16 @@ namespace qRcon
             if (str.Contains("mods/"))
                 str = str.Substring(5);
             return Regex.Replace(str, @"\^[0-9]", "");
+        }
+
+        public String getGametype()
+        {
+            return Localization.getGametype(Gametype);
+        }
+
+        public String getMapName()
+        {
+            return Localization.getMapname(Map);
         }
     }
 }

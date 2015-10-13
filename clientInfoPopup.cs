@@ -16,10 +16,10 @@ namespace qRcon
             InitializeComponent();
         }
 
-        public clientInfoPopup(Dictionary<String,String> clientInfo)
+        public clientInfoPopup(Dictionary<String,String> clientInfo, String clientName)
         {
             InitializeComponent();
-
+            this.Text = "Client Info - " + clientName;
             foreach (KeyValuePair<String, String> field in clientInfo)
             {
                 this.clientInfoGrid.Rows.Add(field.Key, field.Value);
