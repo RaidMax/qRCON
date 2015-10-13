@@ -98,6 +98,68 @@ namespace qRcon
         public abstract RCON_Response rconQuery(String queryString);
         public abstract Dictionary<String, String> getStatus();
         public abstract Dictionary<String, String> serverInfo();
+
+        protected Dictionary<String, String> rconQueryDict(String queryString)
+        {
+            Dictionary<String, String> serverInfo = new Dictionary<String, String>();
+            RCON_Response Resp = rconQuery(queryString);
+
+            if (!Resp.Success)
+                (mainWindow.ActiveForm as mainWindow).rconCommandResponse.AppendText("There was an error processing your command: " + Resp.Error + "\r\n");
+            else
+            {
+                if (queryString.Contains("dumpuser"))
+                {
+                    String[] initialSplit = Resp.Response.Value.Split(new char[] { (char)10 }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach(String S in initialSplit)
+                    {
+                        String[] clientInfo = S.Split(new char[] { ' ', ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (clientInfo.Length > 1)
+                            serverInfo.Add(clientInfo[0], clientInfo[1]);
+                    }
+                }
+                else
+                {
+                    String[] initialSplit = Resp.Response.Value.Split(new char[] { (char)10 }, StringSplitOptions.RemoveEmptyEntries);
+                    String[] Responses;
+                    if (initialSplit.Length == 1)
+                        Responses = initialSplit[0].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+                    else
+                        Responses = initialSplit[1].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    for (int i = 0; i < Responses.Length; i += 2)
+                    {
+                        serverInfo.Add(Responses[i], Responses[i + 1]);
+                    }
+
+                    if (queryString == "getstatus")
+                    {
+                        if (initialSplit.Length > 1)
+                        {
+                            String[] player = new String[initialSplit.Length - 3];
+
+                            for (int i = 2; i < initialSplit.Length - 1; i++)
+                            {
+                                player[i - 2] = initialSplit[i];
+                            }
+
+                            serverInfo.Add("Players", String.Join(",", player));
+                        }
+
+                        else
+                            serverInfo.Add("Players", "");
+
+                    }
+                }
+            }
+            return serverInfo;
+        }
+
+        public Dictionary<String, String> dumpUser(String Name)
+        {
+            return rconQueryDict("dumpuser \"" + Name + "\"");
+        }
+
         protected Byte[] getRequestBytes(String Request)
         {
             Byte[] initialRequestBytes = Encoding.Unicode.GetBytes(Request);     

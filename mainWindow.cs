@@ -12,7 +12,8 @@ namespace qRcon
 {
     public partial class mainWindow : Form
     {
-        RCON currentServer;
+        RCON currentRcon;
+        Server currentServer;
 
         public mainWindow()
         {
@@ -38,8 +39,6 @@ namespace qRcon
             addServerDialog addServer = new addServerDialog();
             addServer.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
             addServer.ShowDialog();
-  
-
      
             if (addServer.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
@@ -50,7 +49,6 @@ namespace qRcon
 
             addServer.Close();
             addServer.Dispose();
-
         }
 
         private void loadSavedServer_Click(object sender, EventArgs e)
@@ -58,8 +56,10 @@ namespace qRcon
             if(savedServers.SelectedItem != null)
             {
                 RCON test = (RCON)(savedServers.SelectedItem);
-                currentServer = test;
+                currentRcon = test;
                 getServerInfo(test);
+                populateGametypeList();
+                populateMapList();
             }
         }
         
@@ -82,7 +82,7 @@ namespace qRcon
         {
             Dictionary<String, String> getStatus = R.getStatus();
             Thread.Sleep(100);
-            RCON_Response maxPlayers = R.rconQuery("party_maxplayers");
+            RCON_Response maxPlayers = R.rconQuery("sv_maxclients");
             Thread.Sleep(100);
             RCON_Response fs_game = R.rconQuery("fs_game");
 
@@ -106,26 +106,16 @@ namespace qRcon
                 Server newServer = new Server(getStatus["sv_hostname"], count, Int32.Parse(maxPlayers.Response.Value), getStatus["g_gametype"], fs_game.Response.Value, playerList, new IW4Localization(), getStatus["mapname"]);
                 refreshServerInfo(newServer);
                 updateConsoleOutput("[" + maxPlayers.responseTime + "ms] Successfully updated server: " + newServer.Hostname);
-            }
-
-            else
-            {
-                updateConsoleOutput("[0ms] Could not update server info. Error: " + maxPlayers.Error + " & " + fs_game.Error + ".");
+                currentServer = newServer;
             }
         }
 
         private void rconCommandSubmit_Click(object sender, EventArgs e)
         {
-            if(rconCommandBox.Text.Length > 0 && currentServer != null)
+            if(rconCommandBox.Text.Length > 0 && currentRcon != null)
             {
-                RCON_Response Request = currentServer.rconQuery(rconCommandBox.Text.Trim());
-
-                if (!Request.Success)
-                    updateConsoleOutput("[0ms] Unable to complete rcon request: " + Request.Error);
-                else if (Request.Response.Description != "")
-                    updateConsoleOutput("=== {0} ===\r\nCurrent: {1}\r\nDefault: {2}\r\n{3}", Request.Response.valueName, Request.Response.Value, Request.Response.defaultValue, Request.Response.Description);
-                else
-                    updateConsoleOutput("[" + Request.responseTime + "ms] " + Request.Response.Value);
+                RCON_Response Request = currentRcon.rconQuery(rconCommandBox.Text.Trim());
+                queryUserFeedback(Request);
                 rconCommandBox.Text = String.Empty;
             }
         }
@@ -139,11 +129,8 @@ namespace qRcon
         private void contextKick_Click(object sender, EventArgs e)
         {
             Player P = (Player)(playerListBox.SelectedItem);
-            RCON_Response Request = currentServer.rconQuery("kick " + P.Name + " You have been kicked by qRcon.");
-            if (Request.Success)
-                updateConsoleOutput("[" + Request.responseTime + "ms] " + Request.Response.Value);
-            else
-                updateConsoleOutput("[0ms] Unable to complete rcon request: " + Request.Error );
+            RCON_Response Request = currentRcon.rconQuery("kick \"" + P.Name + "\" \"You have been kicked by qRcon\".");
+            queryUserFeedback(Request);
         }
 
         private void updateConsoleOutput(String Text, params object [] args)
@@ -151,6 +138,40 @@ namespace qRcon
             rconCommandResponse.AppendText(String.Format(Text, args) + "\r\n");
             rconCommandResponse.SelectionStart = rconCommandResponse.Text.Length - 2;
             rconCommandResponse.ScrollToCaret();
+        }
+
+        private void queryUserFeedback(RCON_Response Request)
+        {
+            if (Request.Success)
+            {
+                if (Request.Response.Description != "")
+                    updateConsoleOutput("=== {0} ===\r\nCurrent: {1}\r\nDefault: {2}\r\n{3}", Request.Response.valueName, Request.Response.Value, Request.Response.defaultValue, Request.Response.Description);
+                else
+                    updateConsoleOutput(Request.Response.Value);
+            }
+            else
+                updateConsoleOutput("Unable to complete rcon request: " + Request.Error);
+        }
+
+        private void populateMapList()
+        {
+            if (currentServer != null)
+            {
+                this.mapSelectionBox.Items.Clear();
+                foreach (Map M in currentServer.MapList)
+                    this.mapSelectionBox.Items.Add(M);
+            }
+
+        }
+
+        private void populateGametypeList()
+        {
+            if (currentServer != null)
+            {
+                this.gametypeSelectionBox.Items.Clear();
+                foreach (Gametype G in currentServer.gametypeList)
+                    this.gametypeSelectionBox.Items.Add(G);
+            }
         }
 
         private void rconCommandBox_TextChanged(object sender, EventArgs e)
@@ -182,6 +203,53 @@ namespace qRcon
         {
             if (e.KeyCode == Keys.Enter)
                 this.rconCommandSubmit_Click(sender, e);
+        }
+
+        private void mapRotateButton_Click(object sender, EventArgs e)
+        {
+            if (currentRcon != null)
+                queryUserFeedback(currentRcon.rconQuery("map_rotate"));
+        }
+
+        private void fastRestartButton_Click(object sender, EventArgs e)
+        {
+            if (currentRcon != null)
+                queryUserFeedback(currentRcon.rconQuery("fast_restart"));
+        }
+
+        private void mapRestartButton_Click(object sender, EventArgs e)
+        {
+            if (currentRcon != null)
+                queryUserFeedback(currentRcon.rconQuery("map_restart"));
+        }
+
+        private void clientInfoContext_MouseEnter(object sender, EventArgs e)
+        {
+            clientInfoContext.ForeColor = Color.Black;
+        }
+
+        private void clientInfoContext_MouseLeave(object sender, EventArgs e)
+        {
+            clientInfoContext.ForeColor = Color.LightGray;
+        }
+
+        private void clientInfoContext_Click(object sender, EventArgs e)
+        {
+            Player P = (Player)playerListBox.SelectedItem;
+            clientInfoPopup newPopup = new clientInfoPopup(currentRcon.dumpUser(P.Name));
+            newPopup.Show();
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            if (currentRcon != null)
+                getServerInfo(currentRcon);
+        }
+
+        private void killServerButton_Click(object sender, EventArgs e)
+        {
+            if (currentRcon != null)
+                queryUserFeedback(currentRcon.rconQuery("quit"));
         }
     }
 }

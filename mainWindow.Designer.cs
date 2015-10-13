@@ -46,7 +46,26 @@
             this.playerListContext = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextKick = new System.Windows.Forms.ToolStripMenuItem();
             this.contextTempBan = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientInfoContext = new System.Windows.Forms.ToolStripMenuItem();
             this.serverMapLabel = new System.Windows.Forms.Label();
+            this.mapRotateButton = new System.Windows.Forms.Button();
+            this.fastRestartButton = new System.Windows.Forms.Button();
+            this.mapRestartButton = new System.Windows.Forms.Button();
+            this.timeLimitLabel = new System.Windows.Forms.Label();
+            this.timeLimitBox = new System.Windows.Forms.TextBox();
+            this.setSettingsButton = new System.Windows.Forms.Button();
+            this.friendlyFireLabel = new System.Windows.Forms.Label();
+            this.ffCheckBox = new System.Windows.Forms.CheckBox();
+            this.modBox = new System.Windows.Forms.TextBox();
+            this.modifcationLabel = new System.Windows.Forms.Label();
+            this.gametypeChangeLabel = new System.Windows.Forms.Label();
+            this.gametypeSelectionBox = new System.Windows.Forms.ComboBox();
+            this.mapSelectionBox = new System.Windows.Forms.ComboBox();
+            this.mapBoxLabel = new System.Windows.Forms.Label();
+            this.hardcoreCheckBox = new System.Windows.Forms.CheckBox();
+            this.hardcoreLabel = new System.Windows.Forms.Label();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.killServerButton = new System.Windows.Forms.Button();
             this.playerListContext.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +135,7 @@
             this.hostnameLabel.Name = "hostnameLabel";
             this.hostnameLabel.Size = new System.Drawing.Size(775, 86);
             this.hostnameLabel.TabIndex = 5;
-            this.hostnameLabel.Text = "SV_HOSTNAME";
+            this.hostnameLabel.Text = "HOSTNAME";
             // 
             // playersLabel
             // 
@@ -174,12 +193,11 @@
             // 
             this.rconCommandResponse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.rconCommandResponse.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rconCommandResponse.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.rconCommandResponse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.rconCommandResponse.Location = new System.Drawing.Point(12, 389);
             this.rconCommandResponse.Name = "rconCommandResponse";
             this.rconCommandResponse.ReadOnly = true;
-            this.rconCommandResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.rconCommandResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.rconCommandResponse.Size = new System.Drawing.Size(773, 175);
             this.rconCommandResponse.TabIndex = 11;
             this.rconCommandResponse.Text = "";
@@ -203,16 +221,17 @@
             this.playerListContext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.playerListContext.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.contextKick,
-            this.contextTempBan});
+            this.contextTempBan,
+            this.clientInfoContext});
             this.playerListContext.Name = "playerListContext";
-            this.playerListContext.Size = new System.Drawing.Size(128, 48);
+            this.playerListContext.Size = new System.Drawing.Size(130, 70);
             // 
             // contextKick
             // 
             this.contextKick.BackgroundImage = global::qRcon.Properties.Resources.bg;
             this.contextKick.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.contextKick.Name = "contextKick";
-            this.contextKick.Size = new System.Drawing.Size(127, 22);
+            this.contextKick.Size = new System.Drawing.Size(129, 22);
             this.contextKick.Text = "Kick";
             this.contextKick.Click += new System.EventHandler(this.contextKick_Click);
             this.contextKick.MouseEnter += new System.EventHandler(this.contextKick_MouseEnter);
@@ -224,10 +243,21 @@
             this.contextTempBan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.contextTempBan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.contextTempBan.Name = "contextTempBan";
-            this.contextTempBan.Size = new System.Drawing.Size(127, 22);
+            this.contextTempBan.Size = new System.Drawing.Size(129, 22);
             this.contextTempBan.Text = "Temp Ban";
             this.contextTempBan.MouseEnter += new System.EventHandler(this.contextTempBan_MouseEnter);
             this.contextTempBan.MouseLeave += new System.EventHandler(this.contextTempBan_MouseLeave);
+            // 
+            // clientInfoContext
+            // 
+            this.clientInfoContext.BackgroundImage = global::qRcon.Properties.Resources.bg;
+            this.clientInfoContext.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.clientInfoContext.Name = "clientInfoContext";
+            this.clientInfoContext.Size = new System.Drawing.Size(129, 22);
+            this.clientInfoContext.Text = "Client Info";
+            this.clientInfoContext.Click += new System.EventHandler(this.clientInfoContext_Click);
+            this.clientInfoContext.MouseEnter += new System.EventHandler(this.clientInfoContext_MouseEnter);
+            this.clientInfoContext.MouseLeave += new System.EventHandler(this.clientInfoContext_MouseLeave);
             // 
             // serverMapLabel
             // 
@@ -239,12 +269,221 @@
             this.serverMapLabel.TabIndex = 13;
             this.serverMapLabel.Text = "MAPNAME";
             // 
+            // mapRotateButton
+            // 
+            this.mapRotateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mapRotateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.mapRotateButton.Location = new System.Drawing.Point(863, 145);
+            this.mapRotateButton.Name = "mapRotateButton";
+            this.mapRotateButton.Size = new System.Drawing.Size(109, 34);
+            this.mapRotateButton.TabIndex = 14;
+            this.mapRotateButton.Text = "Map Rotate";
+            this.mapRotateButton.UseVisualStyleBackColor = true;
+            this.mapRotateButton.Click += new System.EventHandler(this.mapRotateButton_Click);
+            // 
+            // fastRestartButton
+            // 
+            this.fastRestartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fastRestartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.fastRestartButton.Location = new System.Drawing.Point(863, 225);
+            this.fastRestartButton.Name = "fastRestartButton";
+            this.fastRestartButton.Size = new System.Drawing.Size(109, 34);
+            this.fastRestartButton.TabIndex = 15;
+            this.fastRestartButton.Text = "Fast Restart";
+            this.fastRestartButton.UseVisualStyleBackColor = true;
+            this.fastRestartButton.Click += new System.EventHandler(this.fastRestartButton_Click);
+            // 
+            // mapRestartButton
+            // 
+            this.mapRestartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mapRestartButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.mapRestartButton.Location = new System.Drawing.Point(863, 185);
+            this.mapRestartButton.Name = "mapRestartButton";
+            this.mapRestartButton.Size = new System.Drawing.Size(109, 34);
+            this.mapRestartButton.TabIndex = 16;
+            this.mapRestartButton.Text = "Map Restart";
+            this.mapRestartButton.UseVisualStyleBackColor = true;
+            this.mapRestartButton.Click += new System.EventHandler(this.mapRestartButton_Click);
+            // 
+            // timeLimitLabel
+            // 
+            this.timeLimitLabel.AutoSize = true;
+            this.timeLimitLabel.Location = new System.Drawing.Point(7, 312);
+            this.timeLimitLabel.Name = "timeLimitLabel";
+            this.timeLimitLabel.Size = new System.Drawing.Size(83, 21);
+            this.timeLimitLabel.TabIndex = 17;
+            this.timeLimitLabel.Text = "Time Limit";
+            // 
+            // timeLimitBox
+            // 
+            this.timeLimitBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.timeLimitBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.timeLimitBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.timeLimitBox.Location = new System.Drawing.Point(11, 336);
+            this.timeLimitBox.MaxLength = 6;
+            this.timeLimitBox.Name = "timeLimitBox";
+            this.timeLimitBox.Size = new System.Drawing.Size(79, 29);
+            this.timeLimitBox.TabIndex = 18;
+            // 
+            // setSettingsButton
+            // 
+            this.setSettingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.setSettingsButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.setSettingsButton.Location = new System.Drawing.Point(863, 331);
+            this.setSettingsButton.Name = "setSettingsButton";
+            this.setSettingsButton.Size = new System.Drawing.Size(109, 34);
+            this.setSettingsButton.TabIndex = 19;
+            this.setSettingsButton.Text = "Set";
+            this.setSettingsButton.UseVisualStyleBackColor = true;
+            // 
+            // friendlyFireLabel
+            // 
+            this.friendlyFireLabel.AutoSize = true;
+            this.friendlyFireLabel.Location = new System.Drawing.Point(632, 311);
+            this.friendlyFireLabel.Name = "friendlyFireLabel";
+            this.friendlyFireLabel.Size = new System.Drawing.Size(26, 21);
+            this.friendlyFireLabel.TabIndex = 20;
+            this.friendlyFireLabel.Text = "FF";
+            // 
+            // ffCheckBox
+            // 
+            this.ffCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ffCheckBox.Location = new System.Drawing.Point(636, 336);
+            this.ffCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.ffCheckBox.Name = "ffCheckBox";
+            this.ffCheckBox.Size = new System.Drawing.Size(22, 29);
+            this.ffCheckBox.TabIndex = 21;
+            this.ffCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // modBox
+            // 
+            this.modBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.modBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.modBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.modBox.Location = new System.Drawing.Point(96, 336);
+            this.modBox.MaxLength = 6;
+            this.modBox.Name = "modBox";
+            this.modBox.Size = new System.Drawing.Size(149, 29);
+            this.modBox.TabIndex = 23;
+            // 
+            // modifcationLabel
+            // 
+            this.modifcationLabel.AutoSize = true;
+            this.modifcationLabel.Location = new System.Drawing.Point(148, 312);
+            this.modifcationLabel.Name = "modifcationLabel";
+            this.modifcationLabel.Size = new System.Drawing.Size(42, 21);
+            this.modifcationLabel.TabIndex = 22;
+            this.modifcationLabel.Text = "Mod";
+            // 
+            // gametypeChangeLabel
+            // 
+            this.gametypeChangeLabel.AutoSize = true;
+            this.gametypeChangeLabel.Location = new System.Drawing.Point(307, 312);
+            this.gametypeChangeLabel.Name = "gametypeChangeLabel";
+            this.gametypeChangeLabel.Size = new System.Drawing.Size(81, 21);
+            this.gametypeChangeLabel.TabIndex = 24;
+            this.gametypeChangeLabel.Text = "Gametype";
+            // 
+            // gametypeSelectionBox
+            // 
+            this.gametypeSelectionBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.gametypeSelectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.gametypeSelectionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gametypeSelectionBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.gametypeSelectionBox.FormattingEnabled = true;
+            this.gametypeSelectionBox.Location = new System.Drawing.Point(251, 335);
+            this.gametypeSelectionBox.Name = "gametypeSelectionBox";
+            this.gametypeSelectionBox.Size = new System.Drawing.Size(181, 29);
+            this.gametypeSelectionBox.TabIndex = 25;
+            // 
+            // mapSelectionBox
+            // 
+            this.mapSelectionBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.mapSelectionBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mapSelectionBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mapSelectionBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.mapSelectionBox.FormattingEnabled = true;
+            this.mapSelectionBox.Location = new System.Drawing.Point(438, 335);
+            this.mapSelectionBox.Name = "mapSelectionBox";
+            this.mapSelectionBox.Size = new System.Drawing.Size(181, 29);
+            this.mapSelectionBox.TabIndex = 27;
+            // 
+            // mapBoxLabel
+            // 
+            this.mapBoxLabel.AutoSize = true;
+            this.mapBoxLabel.Location = new System.Drawing.Point(514, 312);
+            this.mapBoxLabel.Name = "mapBoxLabel";
+            this.mapBoxLabel.Size = new System.Drawing.Size(41, 21);
+            this.mapBoxLabel.TabIndex = 26;
+            this.mapBoxLabel.Text = "Map";
+            // 
+            // hardcoreCheckBox
+            // 
+            this.hardcoreCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hardcoreCheckBox.Location = new System.Drawing.Point(673, 336);
+            this.hardcoreCheckBox.Margin = new System.Windows.Forms.Padding(0);
+            this.hardcoreCheckBox.Name = "hardcoreCheckBox";
+            this.hardcoreCheckBox.Size = new System.Drawing.Size(22, 29);
+            this.hardcoreCheckBox.TabIndex = 29;
+            this.hardcoreCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // hardcoreLabel
+            // 
+            this.hardcoreLabel.AutoSize = true;
+            this.hardcoreLabel.Location = new System.Drawing.Point(664, 311);
+            this.hardcoreLabel.Name = "hardcoreLabel";
+            this.hardcoreLabel.Size = new System.Drawing.Size(31, 21);
+            this.hardcoreLabel.TabIndex = 28;
+            this.hardcoreLabel.Text = "HC";
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.refreshButton.Location = new System.Drawing.Point(748, 145);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(109, 34);
+            this.refreshButton.TabIndex = 30;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
+            // killServerButton
+            // 
+            this.killServerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.killServerButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.killServerButton.Location = new System.Drawing.Point(748, 185);
+            this.killServerButton.Name = "killServerButton";
+            this.killServerButton.Size = new System.Drawing.Size(109, 34);
+            this.killServerButton.TabIndex = 31;
+            this.killServerButton.Text = "Kill Server";
+            this.killServerButton.UseVisualStyleBackColor = true;
+            this.killServerButton.Click += new System.EventHandler(this.killServerButton_Click);
+            // 
             // mainWindow
             // 
             this.AcceptButton = this.rconCommandSubmit;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(984, 611);
+            this.Controls.Add(this.killServerButton);
+            this.Controls.Add(this.refreshButton);
+            this.Controls.Add(this.hardcoreCheckBox);
+            this.Controls.Add(this.hardcoreLabel);
+            this.Controls.Add(this.mapSelectionBox);
+            this.Controls.Add(this.mapBoxLabel);
+            this.Controls.Add(this.gametypeSelectionBox);
+            this.Controls.Add(this.gametypeChangeLabel);
+            this.Controls.Add(this.modBox);
+            this.Controls.Add(this.modifcationLabel);
+            this.Controls.Add(this.ffCheckBox);
+            this.Controls.Add(this.friendlyFireLabel);
+            this.Controls.Add(this.setSettingsButton);
+            this.Controls.Add(this.timeLimitBox);
+            this.Controls.Add(this.timeLimitLabel);
+            this.Controls.Add(this.mapRestartButton);
+            this.Controls.Add(this.fastRestartButton);
+            this.Controls.Add(this.mapRotateButton);
             this.Controls.Add(this.serverMapLabel);
             this.Controls.Add(this.playerListBox);
             this.Controls.Add(this.rconCommandResponse);
@@ -292,6 +531,25 @@
         private System.Windows.Forms.ToolStripMenuItem contextKick;
         private System.Windows.Forms.ToolStripMenuItem contextTempBan;
         private System.Windows.Forms.Label serverMapLabel;
+        private System.Windows.Forms.Button mapRotateButton;
+        private System.Windows.Forms.Button fastRestartButton;
+        private System.Windows.Forms.Button mapRestartButton;
+        private System.Windows.Forms.Label timeLimitLabel;
+        private System.Windows.Forms.TextBox timeLimitBox;
+        private System.Windows.Forms.Button setSettingsButton;
+        private System.Windows.Forms.Label friendlyFireLabel;
+        private System.Windows.Forms.CheckBox ffCheckBox;
+        private System.Windows.Forms.TextBox modBox;
+        private System.Windows.Forms.Label modifcationLabel;
+        private System.Windows.Forms.Label gametypeChangeLabel;
+        private System.Windows.Forms.ComboBox gametypeSelectionBox;
+        private System.Windows.Forms.ComboBox mapSelectionBox;
+        private System.Windows.Forms.Label mapBoxLabel;
+        private System.Windows.Forms.CheckBox hardcoreCheckBox;
+        private System.Windows.Forms.Label hardcoreLabel;
+        private System.Windows.Forms.ToolStripMenuItem clientInfoContext;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button killServerButton;
 
     }
 }

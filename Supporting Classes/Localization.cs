@@ -9,5 +9,7 @@ namespace qRcon
     {
         String getGametype(String input);
         String getMapname(String input);
+        Gametype[] getAvailableGametypes();
+        Map[] getAvailableMaps();
     }
 }

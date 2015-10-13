@@ -66,6 +66,12 @@
     <Compile Include="addServerDialog.Designer.cs">
       <DependentUpon>addServerDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="clientInfoPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="clientInfoPopup.Designer.cs">
+      <DependentUpon>clientInfoPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Files\Loading.cs" />
     <Compile Include="Files\Serialize.cs" />
     <Compile Include="IW4\IW4Localization.cs" />
@@ -88,6 +94,9 @@
     <Compile Include="Supporting Classes\Server.cs" />
     <EmbeddedResource Include="addServerDialog.resx">
       <DependentUpon>addServerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="clientInfoPopup.resx">
+      <DependentUpon>clientInfoPopup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mainWindow.resx">
       <DependentUpon>mainWindow.cs</DependentUpon>

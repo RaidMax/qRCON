@@ -73,9 +73,12 @@ namespace qRcon
                 } while (rconConnection.Available > 0);
             }
 
-            catch (Exception)
+            catch (SocketException E)
             {
-                Response.Error = RCON_Error.RESPONSE_INCOMPLETE;
+                if (E.SocketErrorCode == SocketError.ConnectionReset)
+                    Response.Error = RCON_Error.CONNECTION_TERMINATED;
+                else
+                    Response.Error = RCON_Error.RESPONSE_INCOMPLETE;
                 return Response;
             }
 
@@ -103,7 +106,7 @@ namespace qRcon
             }
 
             else
-                Response.Response.Value = stripColors(incomingString.ToString());
+                Response.Response.Value = stripColors(incomingString.ToString()).Substring(10);
             Response.responseTime = (int)(DateTime.Now - startTime).TotalMilliseconds;
             if (Response.Response.Value.Contains("Invalid password."))
             {
@@ -117,50 +120,6 @@ namespace qRcon
             rconConnection.Close();
             rconConnection = null;
             return Response;
-        }
-
-
-        private Dictionary<String, String> rconQueryDict(String queryString)
-        {
-            Dictionary<String, String> serverInfo = new Dictionary<String,String>();
-            RCON_Response Resp  = rconQuery(queryString);
-
-            if (!Resp.Success)
-                (mainWindow.ActiveForm as mainWindow).rconCommandResponse.AppendText("There was an error processing your command: " + Resp.Error + "\r\n");
-            else
-            {
-                String[] initialSplit = Resp.Response.Value.Split(new char[] { (char)10 }, StringSplitOptions.RemoveEmptyEntries);
-                String[] Responses;
-                if (initialSplit.Length == 1)
-                    Responses = initialSplit[0].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
-                else
-                    Responses = initialSplit[1].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
-
-                for (int i = 0; i < Responses.Length; i+=2)
-                {
-                    serverInfo.Add(Responses[i], Responses[i + 1]);
-                }
-
-                if (queryString == "getstatus")
-                {
-                    if (initialSplit.Length > 1)
-                    {
-                        String[] player = new String[initialSplit.Length - 3];
-
-                        for (int i = 2; i < initialSplit.Length - 1; i++)
-                        {
-                            player[i - 2] = initialSplit[i];
-                        }
-
-                        serverInfo.Add("Players", String.Join(",", player));
-                    }
-
-                    else
-                        serverInfo.Add("Players", "");
-
-                }
-            }
-            return serverInfo;
         }
 
         public override Dictionary<String, String> getStatus()
