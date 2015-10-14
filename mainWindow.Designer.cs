@@ -525,7 +525,7 @@
             this.Controls.Add(this.deleteSavedServer);
             this.Controls.Add(this.loadSavedServer);
             this.Controls.Add(this.savedServers);
-            this.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
