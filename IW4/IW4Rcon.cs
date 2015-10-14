@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Net.Sockets;
 using System.Net;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace qRcon
 {
@@ -17,6 +18,12 @@ namespace qRcon
         public override RCON_Response rconQuery(String queryString)
         {
             RCON_Response Response = new RCON_Response(queryString);
+
+			// prevent accidental flooding
+			double timeSinceLastQuery = (int)(DateTime.Now - lastQuery).TotalMilliseconds;
+			if (timeSinceLastQuery < 140 && timeSinceLastQuery > 0)
+				Thread.Sleep(140 - (int)timeSinceLastQuery);
+			lastQuery = DateTime.Now;
 
             // set up our socket
             rconConnection = new UdpClient();

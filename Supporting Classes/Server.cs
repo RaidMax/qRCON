@@ -71,9 +71,10 @@ namespace qRcon
         public Player[] Players { get; private set; }
         public Map[] MapList { get; private set; }
         public Gametype[] gametypeList { get; private set; }
+		public RCON Console { get; private set; }
         private ILocalization Localization;
 
-        public Server (String H, int P, int mP, String G, String M, Player[] Players, ILocalization Localization, String Mapname)
+		public Server (String H, int P, int mP, String G, String M, Player[] Players, ILocalization Localization, String Mapname, RCON Con)
         {
             Hostname = stripColors(H);
             currentPlayers = P;
@@ -82,6 +83,7 @@ namespace qRcon
             Mod = stripColors(M);
             this.Players = Players;
             this.Localization = Localization;
+			Console = Con;
             Map = Mapname;
             MapList = Localization.getAvailableMaps();
             gametypeList = Localization.getAvailableGametypes();

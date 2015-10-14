@@ -11,4 +11,15 @@ namespace qRcon
         Gametype[] getAvailableGametypes();
         Map[] getAvailableMaps();
     }
+
+	class LocalizationType
+	{
+		public static ILocalization Get(String Game)
+		{
+			if (Game == "IW4")
+				return new IW4Localization();
+
+			return new IW4Localization();
+		}
+	}
 }

@@ -71,6 +71,7 @@ namespace qRcon
         protected ushort Port;
         protected String rconPassword;
         protected UdpClient rconConnection;
+		protected DateTime lastQuery;
 
         public RCON(String IP, ushort Port, String rconPassword)
         {
@@ -192,5 +193,20 @@ namespace qRcon
         {
             return IP.ToString() + ":" + Port;
         }
+
+		public override bool Equals (Object obj)
+		{
+			if (obj.GetType().IsAssignableFrom (this.GetType())) 
+			{
+				RCON ob = (RCON)obj;
+				return ob.IP == this.IP && ob.Port == this.Port;
+			}
+			return false;
+		}
+
+		public override int GetHashCode ()
+		{
+			return this.IP.GetHashCode() + this.Port.GetHashCode();
+		}
     }
 }
