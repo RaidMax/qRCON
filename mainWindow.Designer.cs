@@ -77,10 +77,10 @@
             this.savedServers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.savedServers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.savedServers.FormattingEnabled = true;
-            this.savedServers.ItemHeight = 20;
+            this.savedServers.ItemHeight = 17;
             this.savedServers.Location = new System.Drawing.Point(12, 9);
             this.savedServers.Name = "savedServers";
-            this.savedServers.Size = new System.Drawing.Size(178, 142);
+            this.savedServers.Size = new System.Drawing.Size(178, 138);
             this.savedServers.TabIndex = 0;
             // 
             // loadSavedServer
@@ -173,7 +173,7 @@
             this.rconCommandBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.rconCommandBox.Location = new System.Drawing.Point(8, 575);
             this.rconCommandBox.Name = "rconCommandBox";
-            this.rconCommandBox.Size = new System.Drawing.Size(700, 27);
+            this.rconCommandBox.Size = new System.Drawing.Size(700, 25);
             this.rconCommandBox.TabIndex = 9;
             this.rconCommandBox.TextChanged += new System.EventHandler(this.rconCommandBox_TextChanged);
             this.rconCommandBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rconCommandBox_KeyDown);
@@ -211,11 +211,11 @@
             this.playerListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.playerListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.playerListBox.FormattingEnabled = true;
-            this.playerListBox.ItemHeight = 20;
+            this.playerListBox.ItemHeight = 17;
             this.playerListBox.Location = new System.Drawing.Point(794, 382);
             this.playerListBox.Margin = new System.Windows.Forms.Padding(0);
             this.playerListBox.Name = "playerListBox";
-            this.playerListBox.Size = new System.Drawing.Size(181, 220);
+            this.playerListBox.Size = new System.Drawing.Size(181, 204);
             this.playerListBox.Sorted = true;
             this.playerListBox.TabIndex = 12;
             this.playerListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.playerListBox_MouseDoubleClick);
@@ -245,7 +245,7 @@
             // 
             this.contextTempBan.BackgroundImage = global::qRcon.Properties.Resources.bg;
             this.contextTempBan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.contextTempBan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.contextTempBan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.contextTempBan.Name = "contextTempBan";
             this.contextTempBan.Size = new System.Drawing.Size(129, 22);
             this.contextTempBan.Text = "Temp Ban";
@@ -314,7 +314,7 @@
             this.timeLimitLabel.AutoSize = true;
             this.timeLimitLabel.Location = new System.Drawing.Point(7, 312);
             this.timeLimitLabel.Name = "timeLimitLabel";
-            this.timeLimitLabel.Size = new System.Drawing.Size(79, 20);
+            this.timeLimitLabel.Size = new System.Drawing.Size(72, 19);
             this.timeLimitLabel.TabIndex = 17;
             this.timeLimitLabel.Text = "Time Limit";
             // 
@@ -326,7 +326,7 @@
             this.timeLimitBox.Location = new System.Drawing.Point(11, 336);
             this.timeLimitBox.MaxLength = 6;
             this.timeLimitBox.Name = "timeLimitBox";
-            this.timeLimitBox.Size = new System.Drawing.Size(79, 27);
+            this.timeLimitBox.Size = new System.Drawing.Size(79, 25);
             this.timeLimitBox.TabIndex = 18;
             // 
             // setSettingsButton
@@ -346,7 +346,7 @@
             this.friendlyFireLabel.AutoSize = true;
             this.friendlyFireLabel.Location = new System.Drawing.Point(787, 313);
             this.friendlyFireLabel.Name = "friendlyFireLabel";
-            this.friendlyFireLabel.Size = new System.Drawing.Size(23, 20);
+            this.friendlyFireLabel.Size = new System.Drawing.Size(23, 19);
             this.friendlyFireLabel.TabIndex = 20;
             this.friendlyFireLabel.Text = "FF";
             // 
@@ -368,7 +368,7 @@
             this.modBox.Location = new System.Drawing.Point(96, 336);
             this.modBox.MaxLength = 6;
             this.modBox.Name = "modBox";
-            this.modBox.Size = new System.Drawing.Size(149, 27);
+            this.modBox.Size = new System.Drawing.Size(149, 25);
             this.modBox.TabIndex = 23;
             // 
             // modifcationLabel
@@ -376,7 +376,7 @@
             this.modifcationLabel.AutoSize = true;
             this.modifcationLabel.Location = new System.Drawing.Point(148, 312);
             this.modifcationLabel.Name = "modifcationLabel";
-            this.modifcationLabel.Size = new System.Drawing.Size(40, 20);
+            this.modifcationLabel.Size = new System.Drawing.Size(38, 19);
             this.modifcationLabel.TabIndex = 22;
             this.modifcationLabel.Text = "Mod";
             // 
@@ -385,7 +385,7 @@
             this.gametypeChangeLabel.AutoSize = true;
             this.gametypeChangeLabel.Location = new System.Drawing.Point(462, 314);
             this.gametypeChangeLabel.Name = "gametypeChangeLabel";
-            this.gametypeChangeLabel.Size = new System.Drawing.Size(77, 20);
+            this.gametypeChangeLabel.Size = new System.Drawing.Size(72, 19);
             this.gametypeChangeLabel.TabIndex = 24;
             this.gametypeChangeLabel.Text = "Gametype";
             // 
@@ -398,7 +398,7 @@
             this.gametypeSelectionBox.FormattingEnabled = true;
             this.gametypeSelectionBox.Location = new System.Drawing.Point(406, 337);
             this.gametypeSelectionBox.Name = "gametypeSelectionBox";
-            this.gametypeSelectionBox.Size = new System.Drawing.Size(181, 28);
+            this.gametypeSelectionBox.Size = new System.Drawing.Size(181, 25);
             this.gametypeSelectionBox.TabIndex = 25;
             // 
             // mapSelectionBox
@@ -410,7 +410,7 @@
             this.mapSelectionBox.FormattingEnabled = true;
             this.mapSelectionBox.Location = new System.Drawing.Point(593, 337);
             this.mapSelectionBox.Name = "mapSelectionBox";
-            this.mapSelectionBox.Size = new System.Drawing.Size(181, 28);
+            this.mapSelectionBox.Size = new System.Drawing.Size(181, 25);
             this.mapSelectionBox.TabIndex = 27;
             // 
             // mapBoxLabel
@@ -418,7 +418,7 @@
             this.mapBoxLabel.AutoSize = true;
             this.mapBoxLabel.Location = new System.Drawing.Point(669, 314);
             this.mapBoxLabel.Name = "mapBoxLabel";
-            this.mapBoxLabel.Size = new System.Drawing.Size(39, 20);
+            this.mapBoxLabel.Size = new System.Drawing.Size(37, 19);
             this.mapBoxLabel.TabIndex = 26;
             this.mapBoxLabel.Text = "Map";
             // 
@@ -437,7 +437,7 @@
             this.hardcoreLabel.AutoSize = true;
             this.hardcoreLabel.Location = new System.Drawing.Point(819, 313);
             this.hardcoreLabel.Name = "hardcoreLabel";
-            this.hardcoreLabel.Size = new System.Drawing.Size(29, 20);
+            this.hardcoreLabel.Size = new System.Drawing.Size(28, 19);
             this.hardcoreLabel.TabIndex = 28;
             this.hardcoreLabel.Text = "HC";
             // 
@@ -473,7 +473,7 @@
             this.passwordBox.Location = new System.Drawing.Point(251, 337);
             this.passwordBox.MaxLength = 32;
             this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(149, 27);
+            this.passwordBox.Size = new System.Drawing.Size(149, 25);
             this.passwordBox.TabIndex = 33;
             // 
             // passwordLabel
@@ -481,7 +481,7 @@
             this.passwordLabel.AutoSize = true;
             this.passwordLabel.Location = new System.Drawing.Point(288, 312);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
+            this.passwordLabel.Size = new System.Drawing.Size(67, 19);
             this.passwordLabel.TabIndex = 32;
             this.passwordLabel.Text = "Password";
             // 
@@ -525,7 +525,7 @@
             this.Controls.Add(this.deleteSavedServer);
             this.Controls.Add(this.loadSavedServer);
             this.Controls.Add(this.savedServers);
-            this.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
