@@ -181,7 +181,7 @@
             // rconCommandSubmit
             // 
             this.rconCommandSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rconCommandSubmit.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rconCommandSubmit.Font = new System.Drawing.Font("Segoe UI", 11.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rconCommandSubmit.ForeColor = System.Drawing.Color.Gray;
             this.rconCommandSubmit.Location = new System.Drawing.Point(718, 573);
             this.rconCommandSubmit.Name = "rconCommandSubmit";
@@ -200,7 +200,7 @@
             this.rconCommandResponse.Name = "rconCommandResponse";
             this.rconCommandResponse.ReadOnly = true;
             this.rconCommandResponse.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rconCommandResponse.Size = new System.Drawing.Size(773, 175);
+            this.rconCommandResponse.Size = new System.Drawing.Size(778, 185);
             this.rconCommandResponse.TabIndex = 11;
             this.rconCommandResponse.Text = "";
             // 
@@ -471,7 +471,7 @@
             this.passwordBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.passwordBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.passwordBox.Location = new System.Drawing.Point(251, 337);
-            this.passwordBox.MaxLength = 6;
+            this.passwordBox.MaxLength = 32;
             this.passwordBox.Name = "passwordBox";
             this.passwordBox.Size = new System.Drawing.Size(149, 27);
             this.passwordBox.TabIndex = 33;
