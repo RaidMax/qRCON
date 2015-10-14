@@ -203,6 +203,7 @@
             this.rconCommandResponse.Size = new System.Drawing.Size(778, 185);
             this.rconCommandResponse.TabIndex = 11;
             this.rconCommandResponse.Text = "";
+			this.rconCommandResponse.Font = new System.Drawing.Font("Courier New", 9.3F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // playerListBox
             // 
@@ -366,7 +367,7 @@
             this.modBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.modBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.modBox.Location = new System.Drawing.Point(96, 336);
-            this.modBox.MaxLength = 6;
+            this.modBox.MaxLength = 32;
             this.modBox.Name = "modBox";
             this.modBox.Size = new System.Drawing.Size(149, 25);
             this.modBox.TabIndex = 23;

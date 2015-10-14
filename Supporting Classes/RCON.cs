@@ -113,15 +113,25 @@ namespace qRcon
                     foreach(String S in initialSplit)
                     {
                         String[] clientInfo = S.Split(new char[] { ' ', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (clientInfo.Length > 1)
-                            serverInfo.Add(clientInfo[0], clientInfo[1]);
+						if (clientInfo.Length > 1) 
+						{
+							StringBuilder cName = new StringBuilder();
+							for (int i = 1; i < clientInfo.Length; i++)
+								if (clientInfo [i].Length > 0)
+									cName.Append (clientInfo [i]);
+
+							serverInfo.Add(clientInfo[0], cName.ToString());
+						}
+
                     }
                 }
                 else
                 {
                     String[] initialSplit = Resp.Response.Value.Split(new char[] { (char)10 }, StringSplitOptions.RemoveEmptyEntries);
                     String[] Responses;
-                    if (initialSplit.Length == 1)
+					if (initialSplit.Length == 0) 
+						return serverInfo;
+                    else if (initialSplit.Length == 1)
                         Responses = initialSplit[0].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
                     else
                         Responses = initialSplit[1].Split(new char[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
