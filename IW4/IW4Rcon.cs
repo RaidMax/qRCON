@@ -20,8 +20,8 @@ namespace qRcon
 
             // set up our socket
             rconConnection = new UdpClient();
-            rconConnection.Client.SendTimeout = 5000;
-            rconConnection.Client.ReceiveTimeout = 5000;
+            rconConnection.Client.SendTimeout = 2500;
+            rconConnection.Client.ReceiveTimeout = 2500;
 
             if (queryString == "getstatus")
                 queryString = String.Format("ÿÿÿÿ {0}", queryString);

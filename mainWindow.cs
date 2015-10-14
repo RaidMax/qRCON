@@ -22,9 +22,19 @@ namespace qRcon
         private void mainWindow_Load(object sender, EventArgs e)
         {
             foreach(RCON R in Serialize.loadSavedServers())
-            {
                 this.savedServers.Items.Add(R);
-            }  
+            
+            UpdateInformation versionInfo = Updating.getUpdateInformation();
+            if (!versionInfo.successfulCheck || versionInfo.latestVersion == 0)
+                updateConsoleOutput("Failed to get update information. Current version is " + versionInfo.currentVersion);
+            else if (versionInfo.currentVersion < versionInfo.latestVersion)
+                updateConsoleOutput("qRCON is outdated! Latest version is v{0}. You are using v{1}\nDownload at {2}\nChangelog: {3}", versionInfo.latestVersion, versionInfo.currentVersion,versionInfo.updateLink, versionInfo.changeLog);
+            else
+                updateConsoleOutput("Your version of qRCON is up to date.");
+
+            this.rconCommandResponse.Select(0, rconCommandResponse.Text.Length - 1);
+            this.rconCommandResponse.SelectionColor = Color.Red;
+            this.Text = (this.Text + " v" + versionInfo.currentVersion);
         }
 
         private void deleteSavedServer_Click(object sender, EventArgs e)

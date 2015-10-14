@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qRcon", "qRcon.csproj", "{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}"
@@ -11,10 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{587021BD-2AF2-4C29-AC6C-2C6AF07F9FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
@@ -22,8 +25,5 @@ Global
 		$1.DirectoryNamespaceAssociation = None
 		$1.ResourceNamePolicy = FileFormatDefault
 		version = 1
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
