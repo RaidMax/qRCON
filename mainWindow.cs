@@ -267,6 +267,9 @@ namespace qRcon
 
         private void setSettingsButton_Click(object sender, EventArgs e)
         {
+            if (currentRcon == null)
+                return;
+
             List<String> rconCommands = new List<String>();
             String newMap = String.Empty;
 
